@@ -42,14 +42,12 @@ env.Append(
     ],
 
     CFLAGS=[
-        "-mlongcalls",
         "-Wno-frame-address",
         "-std=gnu99",
         "-Wno-old-style-declaration"
     ],
 
     CXXFLAGS=[
-        "-mlongcalls",
         "-Wno-frame-address",
         "-std=gnu++11",
         "-fexceptions",
@@ -58,6 +56,7 @@ env.Append(
 
     CCFLAGS=[
         "-Os",
+        "-mlongcalls",
         "-ffunction-sections",
         "-fdata-sections",
         "-Wno-error=unused-function",
@@ -241,7 +240,7 @@ env.Append(
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "fatfs", "diskio"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "fatfs", "vfs"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "fatfs", "src"),
-        join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "freemodbus", "common", "include"),
+        join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "freemodbus", "freemodbus", "common", "include"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "idf_test", "include"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "idf_test", "include", "esp32"),
         join(FRAMEWORK_DIR, "tools", "sdk", "esp32", "include", "jsmn", "include"),
@@ -324,7 +323,7 @@ env.Append(
         "UNITY_INCLUDE_CONFIG_H",
         "WITH_POSIX",
         "_GNU_SOURCE",
-        ("IDF_VER", '\\"v4.4.1-12-g3f78933bfb\\"'),
+        ("IDF_VER", '\\"v4.4.3-357-gca0314da35\\"'),
         "ESP_PLATFORM",
         "_POSIX_READER_WRITER_LOCKS",
         "ARDUINO_ARCH_ESP32",

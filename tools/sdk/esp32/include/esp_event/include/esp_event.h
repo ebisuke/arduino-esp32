@@ -80,7 +80,6 @@ esp_err_t esp_event_loop_delete(esp_event_loop_handle_t event_loop);
  */
 esp_err_t esp_event_loop_create_default(void);
 esp_err_t esp_event_loop_create_default_noauto(void);
-
 /**
  * @brief Delete the default event loop
  *
