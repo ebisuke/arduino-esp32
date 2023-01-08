@@ -181,9 +181,12 @@ static inline void psa_clear_key_slot_number(
  *         support registering a key.
  * \retval #PSA_ERROR_INVALID_ARGUMENT
  *         The identifier in \p attributes is invalid, namely the identifier is
- *         not in the user range, or
+ *         not in the user range.
+ * \retval #PSA_ERROR_INVALID_ARGUMENT
  *         \p attributes specifies a lifetime which is not located
- *         in a secure element, or no slot number is specified in \p attributes,
+ *         in a secure element.
+ * \retval #PSA_ERROR_INVALID_ARGUMENT
+ *         No slot number is specified in \p attributes,
  *         or the specified slot number is not valid.
  * \retval #PSA_ERROR_NOT_PERMITTED
  *         The caller is not authorized to register the specified key slot.
@@ -345,7 +348,7 @@ psa_status_t mbedtls_psa_inject_entropy(const uint8_t *seed,
  * length of the byte string is the private key size in bytes (leading zeroes
  * are not stripped).
  *
- * Deterministic DSA key derivation with psa_generate_derived_key follows
+ * Determinstic DSA key derivation with psa_generate_derived_key follows
  * FIPS 186-4 &sect;B.1.2: interpret the byte string as integer
  * in big-endian order. Discard it if it is not in the range
  * [0, *N* - 2] where *N* is the boundary of the private key domain
@@ -445,9 +448,9 @@ psa_status_t mbedtls_psa_inject_entropy(const uint8_t *seed,
  *   As an exception, the public exponent 65537 is represented by an empty
  *   byte string.
  * - For DSA keys (#PSA_KEY_TYPE_DSA_PUBLIC_KEY or #PSA_KEY_TYPE_DSA_KEY_PAIR),
- *   the `Dss-Params` format as defined by RFC 3279 &sect;2.3.2.
+ *   the `Dss-Parms` format as defined by RFC 3279 &sect;2.3.2.
  *   ```
- *   Dss-Params ::= SEQUENCE  {
+ *   Dss-Parms ::= SEQUENCE  {
  *      p       INTEGER,
  *      q       INTEGER,
  *      g       INTEGER
@@ -463,9 +466,9 @@ psa_status_t mbedtls_psa_inject_entropy(const uint8_t *seed,
  *      g               INTEGER,                    -- generator, g
  *      q               INTEGER,                    -- factor of p-1
  *      j               INTEGER OPTIONAL,           -- subgroup factor
- *      validationParams ValidationParams OPTIONAL
+ *      validationParms ValidationParms OPTIONAL
  *   }
- *   ValidationParams ::= SEQUENCE {
+ *   ValidationParms ::= SEQUENCE {
  *      seed            BIT STRING,
  *      pgenCounter     INTEGER
  *   }
