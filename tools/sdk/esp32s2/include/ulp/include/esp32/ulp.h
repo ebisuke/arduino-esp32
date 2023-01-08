@@ -289,6 +289,8 @@ union ulp_insn {
 
 };
 
+typedef union ulp_insn ulp_insn_t;
+
 _Static_assert(sizeof(ulp_insn_t) == 4, "ULP coprocessor instruction size should be 4 bytes");
 
 /**

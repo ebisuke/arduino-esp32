@@ -43,11 +43,13 @@ env.Append(
     ],
 
     CFLAGS=[
+        "-mlongcalls",
         "-std=gnu99",
         "-Wno-old-style-declaration"
     ],
 
     CXXFLAGS=[
+        "-mlongcalls",
         "-std=gnu++11",
         "-fexceptions",
         "-fno-rtti"
@@ -55,7 +57,6 @@ env.Append(
 
     CCFLAGS=[
         "-Os",
-        "-mlongcalls",
         "-ffunction-sections",
         "-fdata-sections",
         "-Wno-error=unused-function",
@@ -306,7 +307,7 @@ env.Append(
         "UNITY_INCLUDE_CONFIG_H",
         "WITH_POSIX",
         "_GNU_SOURCE",
-        ("IDF_VER", '\\"v4.4.3-5-g080e0690c7\\"'),
+        ("IDF_VER", '\\"v4.4.1-5-g3e49929726\\"'),
         "ESP_PLATFORM",
         "_POSIX_READER_WRITER_LOCKS",
         "ARDUINO_ARCH_ESP32",
