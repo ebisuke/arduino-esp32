@@ -1,7 +1,6 @@
 #pragma once
 
 #include "dl_define.hpp"
-#include "dl_tool.hpp"
 
 namespace dl
 {
@@ -9,7 +8,7 @@ namespace dl
     {
         /**
          * @brief x^a.
-         *
+         * 
          * @param x as a base
          * @param a as an exponent
          * @return x^a
@@ -32,7 +31,7 @@ namespace dl
 
         /**
          * @brief sqrt(x).
-         *
+         * 
          * @param x as a base
          * @return sqrt(x)
          */
@@ -44,7 +43,7 @@ namespace dl
 
         /**
          * @brief 1/sqrt(x).
-         *
+         * 
          * @param x as a base
          * @return 1/sqrt(x)
          */
@@ -62,15 +61,15 @@ namespace dl
 
         /**
          * @brief sqrt(x).
-         *
+         * 
          * @param x as a base
          * @return sqrt(x)
          */
         inline float sqrt_newton(float x)
         {
             /**
-             * Use Newton iteration method to find the square root
-             * */
+            * Use Newton iteration method to find the square root
+            * */
             if (x == 0.f)
                 return 0.f;
             float result = x;
@@ -85,7 +84,7 @@ namespace dl
 
         /**
          * @brief n-th root of x.
-         *
+         * 
          * @param x as a base
          * @param n root times
          * @return n-th root of x
@@ -113,7 +112,7 @@ namespace dl
 
         /**
          * @brief atan(x).
-         *
+         * 
          * @param x as an input
          * @return atan(x) in range [-pi/2, pi/2]
          */
@@ -126,10 +125,10 @@ namespace dl
 
         // TODO:@yuanjiong
         /**
-         * @brief
-         *
+         * @brief 
+         * 
          * @param x
-         * @param y
+         * @param y 
          * @return in range [-pi, pi]
          */
         inline float atan2(float x, float y)
@@ -151,7 +150,7 @@ namespace dl
 
         /**
          * @brief acos(x).
-         *
+         * 
          * @param x as an input
          * @return acos(x) in range [-pi/2, pi/2]
          */
@@ -162,7 +161,7 @@ namespace dl
 
         /**
          * @brief asin(x).
-         *
+         * 
          * @param x as an input
          * @return asin(x) in range [0, pi]
          */
@@ -173,12 +172,12 @@ namespace dl
 
         /**
          * @brief e^x
-         *
+         * 
          * @param x     exponent
          * @param steps iteration steps
          * @return e^x
          */
-        inline float exp_fast(float x, int steps = 8)
+        inline float exp_fast(double x, int steps)
         {
             x = 1.0 + x / (1 << steps);
             for (int i = 0; i < steps; i++)

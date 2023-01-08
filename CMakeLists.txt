@@ -36,7 +36,6 @@ set(CORE_SRCS
   cores/esp32/esp32-hal-matrix.c
   cores/esp32/esp32-hal-misc.c
   cores/esp32/esp32-hal-psram.c
-  cores/esp32/esp32-hal-rgb-led.c
   cores/esp32/esp32-hal-sigmadelta.c
   cores/esp32/esp32-hal-spi.c
   cores/esp32/esp32-hal-time.c
@@ -96,8 +95,6 @@ set(LIBRARY_SRCS
   libraries/RainMaker/src/RMakerParam.cpp
   libraries/RainMaker/src/RMakerDevice.cpp
   libraries/RainMaker/src/RMakerType.cpp
-  libraries/RainMaker/src/RMakerQR.cpp
-  libraries/RainMaker/src/RMakerUtils.cpp
   libraries/SD_MMC/src/SD_MMC.cpp
   libraries/SD/src/SD.cpp
   libraries/SD/src/sd_diskio.cpp
