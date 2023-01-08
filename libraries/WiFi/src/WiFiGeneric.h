@@ -220,6 +220,6 @@ class WiFiGenericClass
     friend class WiFiAPClass;
 };
 void _arduino_event_task(void * arg);
-void _arduino_event_task_oneshot(void * arg);
+void _arduino_event_task_oneshot(void* arg);
 extern bool _arduino_suppress_event_task;
 #endif /* ESP32WIFIGENERIC_H_ */

@@ -296,7 +296,7 @@ static xQueueHandle _arduino_event_queue;
 static TaskHandle_t _arduino_event_task_handle = NULL;
 static EventGroupHandle_t _arduino_event_group = NULL;
 bool _arduino_suppress_event_task=false;
-void _arduino_event_task(void * arg){
+void _arduino_event_task(void* arg){
 	arduino_event_t *data = NULL;
     for (;;) {
         if(xQueueReceive(_arduino_event_queue, &data, portMAX_DELAY) == pdTRUE){
@@ -308,10 +308,10 @@ void _arduino_event_task(void * arg){
     vTaskDelete(NULL);
     _arduino_event_task_handle = NULL;
 }
-void _arduino_event_task_oneshot(void * arg){
+void _arduino_event_task_oneshot(void* arg){
 
     arduino_event_t *data = NULL;
-    if(xQueueReceive(_arduino_event_queue, &data, portMAX_DELAY) == pdTRUE){
+    if(xQueueReceive(_arduino_event_queue, &data, 0) == pdTRUE){
         WiFiGenericClass::_eventCallback(data);
         free(data);
         data = NULL;
