@@ -295,8 +295,8 @@ static void set_esp_netif_hostname(const char * name){
 static xQueueHandle _arduino_event_queue;
 static TaskHandle_t _arduino_event_task_handle = NULL;
 static EventGroupHandle_t _arduino_event_group = NULL;
-
-static void _arduino_event_task(void * arg){
+bool _arduino_suppress_event_task=false;
+void _arduino_event_task(void * arg){
 	arduino_event_t *data = NULL;
     for (;;) {
         if(xQueueReceive(_arduino_event_queue, &data, portMAX_DELAY) == pdTRUE){
@@ -569,7 +569,7 @@ static bool _start_network_event_task(){
         return err;
     }
 
-    if(!_arduino_event_task_handle){
+    if(!_arduino_suppress_event_task && !_arduino_event_task_handle){
         xTaskCreateUniversal(_arduino_event_task, "arduino_events", 4096, NULL, ESP_TASKD_EVENT_PRIO - 1, &_arduino_event_task_handle, ARDUINO_EVENT_RUNNING_CORE);
         if(!_arduino_event_task_handle){
             log_e("Network Event Task Start Failed!");
