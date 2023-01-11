@@ -313,9 +313,11 @@ static void _arduino_event_task(void * arg){
 
 esp_err_t postArduinoEvent(arduino_event_t *data)
 {
+    log_v("postArduinoEvent Event: %p",data );
 	if(data == NULL){
         return ESP_FAIL;
 	}
+    log_v("postArduinoEvent Event id: %d",data->event_id );
 	arduino_event_t * event = (arduino_event_t*)malloc(sizeof(arduino_event_t));
 	if(event == NULL){
         log_e("Arduino Event Malloc Failed!");
@@ -544,6 +546,7 @@ static void _arduino_event_cb(void* arg, esp_event_base_t event_base, int32_t ev
     }
     
 	if(arduino_event.event_id < ARDUINO_EVENT_MAX){
+
 		postArduinoEvent(&arduino_event);
 	}
 }
